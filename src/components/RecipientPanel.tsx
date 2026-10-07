@@ -120,15 +120,15 @@ export default function RecipientPanel({
   const fullPhonePreview = `${countryCode}${phoneDigits}`;
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-xl p-3.5 shadow-sm space-y-3">
+    <div className="bg-white dark:bg-slate-900 border border-stone-200/90 dark:border-slate-800 rounded-2xl p-4 shadow-sm space-y-3.5 transition-all">
       <div className="flex items-center justify-between">
-        <label className="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
-          <Phone className="w-3.5 h-3.5 text-emerald-400" />
+        <label className="text-xs font-bold text-stone-800 dark:text-slate-200 flex items-center gap-1.5">
+          <Phone className="w-3.5 h-3.5 text-bumeran-600 dark:text-bumeran-400" />
           <span>Destinatario WhatsApp</span>
         </label>
         {phoneDigits && (
-          <span className="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-            E.164: +{fullPhonePreview}
+          <span className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-200 dark:border-emerald-500/20 font-semibold">
+            +{fullPhonePreview}
           </span>
         )}
       </div>
@@ -139,10 +139,10 @@ export default function RecipientPanel({
           value={countryCode}
           onChange={(e) => setCountryCode(e.target.value)}
           aria-label="Código de país"
-          className="bg-slate-800 border border-slate-700 text-xs text-white rounded-xl px-2.5 py-2.5 focus:outline-none focus:ring-1 focus:ring-emerald-500 max-w-[130px] truncate"
+          className="bg-stone-50 dark:bg-slate-800 border border-stone-200 dark:border-slate-700 text-xs text-stone-800 dark:text-white rounded-xl px-2.5 py-2.5 focus:outline-none focus:ring-1 focus:ring-bumeran-500 max-w-[130px] truncate shadow-2xs"
         >
           {COUNTRY_CODES.map((item) => (
-            <option key={item.code} value={item.code}>
+            <option key={item.code} value={item.code} className="bg-white dark:bg-slate-800">
               {item.flag} +{item.code}
             </option>
           ))}
@@ -156,15 +156,15 @@ export default function RecipientPanel({
           value={phoneDigits}
           onChange={handlePhoneInputChange}
           aria-label="Número de teléfono móvil de WhatsApp"
-          className="flex-1 bg-slate-800 border border-slate-700 text-xs font-mono text-white placeholder-slate-500 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+          className="flex-1 bg-stone-50 dark:bg-slate-800 border border-stone-200 dark:border-slate-700 text-xs font-mono text-stone-900 dark:text-white placeholder-stone-400 dark:placeholder-slate-500 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-1 focus:ring-bumeran-500 shadow-2xs"
         />
       </div>
 
       {/* Contactos Frecuentes */}
       <div className="pt-1">
-        <div className="flex items-center justify-between text-[11px] text-slate-400 mb-1.5">
-          <span className="flex items-center gap-1">
-            <Bookmark className="w-3 h-3 text-emerald-400" />
+        <div className="flex items-center justify-between text-[11px] text-stone-500 dark:text-slate-400 mb-1.5">
+          <span className="flex items-center gap-1 font-semibold">
+            <Bookmark className="w-3 h-3 text-bumeran-600 dark:text-bumeran-400" />
             <span>Frecuentes</span>
           </span>
 
@@ -173,7 +173,7 @@ export default function RecipientPanel({
               type="button"
               onClick={() => setIsAddingContact(true)}
               disabled={!phoneDigits || phoneDigits.length < 6}
-              className="text-emerald-400 hover:text-emerald-300 disabled:opacity-40 flex items-center gap-0.5 text-[11px] font-medium"
+              className="text-bumeran-600 dark:text-bumeran-400 hover:text-bumeran-700 dark:hover:text-bumeran-300 disabled:opacity-40 flex items-center gap-0.5 text-[11px] font-bold"
             >
               <Plus className="w-3 h-3" />
               <span>Guardar actual</span>
@@ -183,26 +183,26 @@ export default function RecipientPanel({
 
         {/* Formulario rápido para guardar contacto frecuente */}
         {isAddingContact && (
-          <div className="flex items-center gap-1.5 mb-2 bg-slate-800/80 p-1.5 rounded-lg border border-slate-700">
+          <div className="flex items-center gap-1.5 mb-2 bg-stone-50 dark:bg-slate-800/80 p-2 rounded-xl border border-stone-200 dark:border-slate-700">
             <input
               type="text"
               placeholder="Nombre (ej. Juan Socio)"
               value={newContactName}
               onChange={(e) => setNewContactName(e.target.value)}
-              className="flex-1 bg-slate-900 border border-slate-700 text-xs text-white px-2 py-1 rounded"
+              className="flex-1 bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-700 text-xs text-stone-900 dark:text-white px-2.5 py-1.5 rounded-lg"
               autoFocus
             />
             <button
               type="button"
               onClick={handleSaveCurrentAsFrequent}
-              className="px-2 py-1 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs rounded"
+              className="px-2.5 py-1.5 bg-bumeran-600 hover:bg-bumeran-700 text-white font-bold text-xs rounded-lg shadow-2xs"
             >
               Guardar
             </button>
             <button
               type="button"
               onClick={() => setIsAddingContact(false)}
-              className="px-2 py-1 text-slate-400 hover:text-white text-xs"
+              className="px-2 py-1.5 text-stone-500 hover:text-stone-700 dark:text-slate-400 dark:hover:text-white text-xs font-medium"
             >
               Cancelar
             </button>
@@ -218,10 +218,10 @@ export default function RecipientPanel({
               return (
                 <div
                   key={contact.id}
-                  className={`inline-flex items-center rounded-lg text-[11px] border transition overflow-hidden ${
+                  className={`inline-flex items-center rounded-xl text-[11px] border transition-all overflow-hidden ${
                     isCurrent
-                      ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40 font-semibold'
-                      : 'bg-slate-800/80 hover:bg-slate-800 text-slate-300 border-slate-700/60'
+                      ? 'bg-bumeran-50 dark:bg-bumeran-500/20 text-bumeran-700 dark:text-bumeran-300 border-bumeran-300 dark:border-bumeran-500/40 font-semibold shadow-2xs'
+                      : 'bg-stone-50 hover:bg-stone-100 dark:bg-slate-800/80 dark:hover:bg-slate-800 text-stone-700 dark:text-slate-300 border-stone-200 dark:border-slate-700/60'
                   }`}
                 >
                   <button
@@ -230,13 +230,13 @@ export default function RecipientPanel({
                     aria-label={`Usar contacto frecuente ${contact.name}`}
                     className="flex items-center gap-1.5 px-2.5 py-1 text-left"
                   >
-                    <UserCheck className="w-3 h-3 text-emerald-400 shrink-0" />
+                    <UserCheck className="w-3 h-3 text-bumeran-600 dark:text-bumeran-400 shrink-0" />
                     <span className="truncate max-w-[110px]">{contact.name}</span>
                   </button>
                   <button
                     type="button"
                     onClick={(e) => handleDeleteFrequent(contact.id, e)}
-                    className="px-1.5 py-1 text-slate-400 hover:text-red-400 hover:bg-red-500/10 transition border-l border-slate-700/50"
+                    className="px-1.5 py-1 text-stone-400 hover:text-red-500 dark:text-slate-400 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 transition border-l border-stone-200 dark:border-slate-700/50"
                     aria-label={`Eliminar contacto frecuente ${contact.name}`}
                     title="Eliminar de frecuentes"
                   >

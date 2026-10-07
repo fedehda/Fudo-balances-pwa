@@ -33,24 +33,24 @@ export default function ServicesSummary({
   const totalEstimatedAmount = selectedServices.reduce((acc, s) => acc + (s.actualAmount || s.approxAmount), 0);
 
   return (
-    <div className="bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
+    <div className="bg-white dark:bg-slate-900 border border-stone-200/90 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs transition-all">
       {/* Header colapsable */}
       <div className="p-3.5 flex items-center justify-between gap-3">
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center gap-2 text-left flex-1 min-w-0"
+          className="flex items-center gap-2.5 text-left flex-1 min-w-0"
         >
-          <div className="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0">
-            <Zap className="w-4 h-4 text-amber-400" />
+          <div className="w-8 h-8 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 flex items-center justify-center shrink-0">
+            <Zap className="w-4 h-4 text-amber-600 dark:text-amber-400" />
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
-              <span className="text-xs font-semibold text-white truncate">
+              <span className="text-xs font-bold text-stone-900 dark:text-white truncate">
                 Servicios & Impuestos ({selectedServices.length} de {services.length})
               </span>
             </div>
-            <span className="text-[11px] text-slate-400 block truncate">
+            <span className="text-[11px] text-stone-500 dark:text-slate-400 block truncate">
               Vencimientos aprox: {formatCurrencyARS(totalEstimatedAmount)}
             </span>
           </div>
@@ -58,7 +58,7 @@ export default function ServicesSummary({
 
         <div className="flex items-center gap-2">
           {/* Toggle para incluir en el reporte */}
-          <label className="flex items-center gap-1.5 text-xs text-slate-300 cursor-pointer select-none bg-slate-800/80 px-2 py-1 rounded-md border border-slate-700/60">
+          <label className="flex items-center gap-1.5 text-xs text-stone-700 dark:text-slate-300 cursor-pointer select-none bg-stone-100 hover:bg-stone-200/70 dark:bg-slate-800/80 px-2.5 py-1.5 rounded-xl border border-stone-200 dark:border-slate-700/60 transition">
             <input
               type="checkbox"
               checked={includeInMessage}
@@ -68,19 +68,19 @@ export default function ServicesSummary({
             <div
               className={`w-3.5 h-3.5 rounded flex items-center justify-center border ${
                 includeInMessage
-                  ? 'bg-amber-500 border-amber-400 text-slate-950'
-                  : 'border-slate-600 bg-slate-700'
+                  ? 'bg-amber-500 border-amber-500 text-white dark:text-slate-950 font-bold'
+                  : 'border-stone-300 dark:border-slate-600 bg-white dark:bg-slate-700'
               }`}
             >
               {includeInMessage && <Check className="w-2.5 h-2.5 stroke-[3]" />}
             </div>
-            <span className="text-[11px]">En reporte</span>
+            <span className="text-[11px] font-medium">En reporte</span>
           </label>
 
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="p-1 text-slate-400 hover:text-white"
+            className="p-1.5 rounded-lg text-stone-400 hover:text-stone-700 dark:text-slate-400 dark:hover:text-white transition"
             aria-label={isOpen ? 'Colapsar servicios' : 'Expandir servicios'}
           >
             {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -90,11 +90,11 @@ export default function ServicesSummary({
 
       {/* Contenido expandido */}
       {isOpen && (
-        <div className="border-t border-slate-800/70 p-3.5 space-y-3">
+        <div className="border-t border-stone-200/70 dark:border-slate-800/70 p-3.5 space-y-3">
           {/* Barra de acciones de selección y nota informativa */}
-          <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
-            <div className="flex items-center gap-1 text-[11px] text-slate-400">
-              <Info className="w-3.5 h-3.5 text-amber-400/80" />
+          <div className="flex items-center justify-between gap-2 pb-1 border-b border-stone-200/60 dark:border-slate-800/60">
+            <div className="flex items-center gap-1 text-[11px] text-stone-500 dark:text-slate-400">
+              <Info className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400/80" />
               <span>Vencimientos y montos estimados recurrentes</span>
             </div>
 
@@ -102,14 +102,14 @@ export default function ServicesSummary({
               <button
                 type="button"
                 onClick={onSelectAllServices}
-                className="text-[11px] text-emerald-400 hover:text-emerald-300 font-medium px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 active:scale-95"
+                className="text-[11px] text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 font-semibold px-2 py-0.5 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 active:scale-95"
               >
                 Todos
               </button>
               <button
                 type="button"
                 onClick={onDeselectAllServices}
-                className="text-[11px] text-slate-400 hover:text-slate-300 font-medium px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 active:scale-95"
+                className="text-[11px] text-stone-600 dark:text-slate-400 hover:text-stone-900 dark:hover:text-slate-300 font-medium px-2 py-0.5 rounded-lg bg-stone-100 dark:bg-slate-800 border border-stone-200 dark:border-slate-700 active:scale-95"
               >
                 Ninguno
               </button>
@@ -129,19 +129,19 @@ export default function ServicesSummary({
                 <div
                   key={service.id}
                   onClick={() => onToggleService(service.id)}
-                  className={`flex items-center justify-between gap-2.5 p-2.5 rounded-lg border text-xs cursor-pointer transition select-none ${
+                  className={`flex items-center justify-between gap-2.5 p-2.5 rounded-xl border text-xs cursor-pointer transition-all select-none ${
                     isSelected
-                      ? 'bg-slate-800/80 border-slate-700 hover:bg-slate-800'
-                      : 'bg-slate-950/40 border-slate-800/50 opacity-60 hover:opacity-100'
+                      ? 'bg-amber-50/50 dark:bg-slate-800/80 border-amber-300/80 dark:border-slate-700 shadow-2xs'
+                      : 'bg-stone-50/50 dark:bg-slate-950/40 border-stone-200/60 dark:border-slate-800/50 opacity-70 hover:opacity-100'
                   }`}
                 >
                   <div className="flex items-center gap-2.5 min-w-0 flex-1">
                     {/* Checkbox */}
                     <div
-                      className={`w-4 h-4 rounded flex items-center justify-center border shrink-0 transition ${
+                      className={`w-4 h-4 rounded-md flex items-center justify-center border shrink-0 transition ${
                         isSelected
-                          ? 'bg-amber-500 border-amber-400 text-slate-950'
-                          : 'border-slate-600 bg-slate-800'
+                          ? 'bg-amber-500 border-amber-500 text-white dark:text-slate-950'
+                          : 'border-stone-300 dark:border-slate-600 bg-white dark:bg-slate-800'
                       }`}
                     >
                       {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
@@ -150,21 +150,21 @@ export default function ServicesSummary({
                     {/* Detalle */}
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="font-semibold text-slate-100 truncate">
+                        <span className="font-semibold text-stone-900 dark:text-slate-100 truncate">
                           {service.name}
                         </span>
-                        <span className="text-[10px] bg-slate-700/60 text-amber-200/90 px-1.5 py-0.5 rounded border border-slate-600/40 shrink-0">
+                        <span className="text-[10px] bg-amber-100/70 dark:bg-slate-700/60 text-amber-800 dark:text-amber-200/90 px-1.5 py-0.5 rounded-md border border-amber-200 dark:border-slate-600/40 shrink-0 font-medium">
                           {service.categoryName}
                         </span>
                       </div>
 
-                      <div className="flex items-center gap-2 text-[11px] text-slate-400 mt-0.5">
-                        <span className="flex items-center gap-1 text-amber-300/80 font-medium">
+                      <div className="flex items-center gap-2 text-[11px] text-stone-500 dark:text-slate-400 mt-0.5">
+                        <span className="flex items-center gap-1 text-amber-700 dark:text-amber-300/80 font-medium">
                           <CalendarDays className="w-3 h-3" />
                           {dueText}
                         </span>
                         {service.notes && (
-                          <span className="text-slate-500 truncate hidden sm:inline">
+                          <span className="text-stone-400 dark:text-slate-500 truncate hidden sm:inline">
                             • {service.notes}
                           </span>
                         )}
@@ -174,16 +174,16 @@ export default function ServicesSummary({
 
                   {/* Monto y Estado */}
                   <div className="text-right shrink-0">
-                    <span className="font-bold text-slate-100 block tracking-tight">
+                    <span className="font-extrabold text-stone-900 dark:text-slate-100 block tracking-tight">
                       {formatCurrencyARS(amount)}
                     </span>
                     <span
-                      className={`text-[10px] px-1.5 py-0.2 rounded font-medium inline-block mt-0.5 ${
+                      className={`text-[10px] px-1.5 py-0.2 rounded-md font-semibold inline-block mt-0.5 ${
                         service.status === 'paid'
-                          ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                          ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20'
                           : service.status === 'pending'
-                          ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
-                          : 'bg-slate-800 text-slate-400 border border-slate-700/60'
+                          ? 'bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/20'
+                          : 'bg-stone-100 dark:bg-slate-800 text-stone-600 dark:text-slate-400 border border-stone-200 dark:border-slate-700/60'
                       }`}
                     >
                       {service.status === 'paid'

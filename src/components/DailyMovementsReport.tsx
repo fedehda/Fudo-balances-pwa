@@ -184,15 +184,15 @@ export default function DailyMovementsReport({
   return (
     <div className="space-y-3.5">
       {/* Selector de Fecha & Controles */}
-      <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-3.5 shadow-sm space-y-3">
+      <div className="bg-white dark:bg-slate-900/90 border border-stone-200/90 dark:border-slate-800 rounded-2xl p-4 shadow-xs space-y-3">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-              <Calendar className="w-4 h-4 text-emerald-400" />
+            <div className="w-8 h-8 rounded-xl bg-bumeran-50 dark:bg-bumeran-950/60 border border-bumeran-200 dark:border-bumeran-500/30 flex items-center justify-center">
+              <Calendar className="w-4 h-4 text-bumeran-600 dark:text-bumeran-400" />
             </div>
             <div>
-              <h2 className="text-xs font-semibold text-white">Fecha del Reporte</h2>
-              <span className="text-[11px] text-slate-400">Movimientos de cuenta corriente</span>
+              <h2 className="text-xs font-bold text-stone-900 dark:text-white">Fecha del Reporte</h2>
+              <span className="text-[11px] text-stone-500 dark:text-slate-400">Movimientos de cuenta corriente</span>
             </div>
           </div>
 
@@ -200,7 +200,7 @@ export default function DailyMovementsReport({
             type="button"
             onClick={handleRefresh}
             disabled={isRefreshing}
-            className="p-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:text-white transition active:scale-95 disabled:opacity-50"
+            className="p-1.5 rounded-lg bg-stone-100 dark:bg-slate-800 border border-stone-200 dark:border-slate-700 text-stone-600 dark:text-slate-300 hover:text-stone-900 dark:hover:text-white transition active:scale-95 disabled:opacity-50"
             title="Refrescar movimientos"
           >
             <RotateCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
@@ -212,10 +212,10 @@ export default function DailyMovementsReport({
           <button
             type="button"
             onClick={() => setSelectedDate(todayInSalta)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition active:scale-95 border ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition active:scale-95 border ${
               selectedDate === todayInSalta
-                ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40 shadow-sm'
-                : 'bg-slate-800/80 text-slate-400 border-slate-700/60 hover:text-slate-200'
+                ? 'bg-bumeran-500 text-white border-bumeran-600 shadow-xs'
+                : 'bg-stone-50 dark:bg-slate-800/80 text-stone-600 dark:text-slate-400 border-stone-200 dark:border-slate-700/60 hover:text-stone-900 dark:hover:text-slate-200'
             }`}
           >
             Hoy
@@ -224,10 +224,10 @@ export default function DailyMovementsReport({
           <button
             type="button"
             onClick={() => setSelectedDate(yesterdayInSalta)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition active:scale-95 border ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition active:scale-95 border ${
               selectedDate === yesterdayInSalta
-                ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40 shadow-sm'
-                : 'bg-slate-800/80 text-slate-400 border-slate-700/60 hover:text-slate-200'
+                ? 'bg-bumeran-500 text-white border-bumeran-600 shadow-xs'
+                : 'bg-stone-50 dark:bg-slate-800/80 text-stone-600 dark:text-slate-400 border-stone-200 dark:border-slate-700/60 hover:text-stone-900 dark:hover:text-slate-200'
             }`}
           >
             Ayer
@@ -238,15 +238,15 @@ export default function DailyMovementsReport({
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="w-full bg-slate-950/80 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 font-mono"
+              className="w-full bg-stone-50 dark:bg-slate-950/80 border border-stone-200 dark:border-slate-700 rounded-lg px-2.5 py-1 text-base sm:text-xs text-stone-800 dark:text-slate-200 focus:outline-none focus:border-bumeran-500 font-mono"
             />
           </div>
         </div>
 
         {/* Filtro por Medio de Pago */}
-        <div className="pt-2 border-t border-slate-800/70 space-y-1.5">
-          <div className="flex items-center gap-1.5 text-[11px] font-medium text-slate-400">
-            <CreditCard className="w-3.5 h-3.5 text-amber-400" />
+        <div className="pt-2 border-t border-stone-200/80 dark:border-slate-800/70 space-y-1.5">
+          <div className="flex items-center gap-1.5 text-[11px] font-medium text-stone-600 dark:text-slate-400">
+            <CreditCard className="w-3.5 h-3.5 text-bumeran-600 dark:text-amber-400" />
             <span>Filtro de Medio de Pago para Pagos:</span>
           </div>
 
@@ -257,13 +257,13 @@ export default function DailyMovementsReport({
                 setFilterOnlyTransfers(true);
                 setSelectedMethodId('all');
               }}
-              className={`px-2.5 py-1 rounded-lg text-xs font-medium border transition select-none active:scale-95 flex items-center gap-1.5 ${
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold border transition select-none active:scale-95 flex items-center gap-1.5 ${
                 filterOnlyTransfers
-                  ? 'bg-amber-500/20 text-amber-200 border-amber-500/40 font-semibold'
-                  : 'bg-slate-800/60 text-slate-400 border-slate-700/60 hover:text-slate-200'
+                  ? 'bg-bumeran-500 text-white border-bumeran-600 shadow-xs'
+                  : 'bg-stone-50 dark:bg-slate-800/60 text-stone-600 dark:text-slate-400 border-stone-200 dark:border-slate-700/60 hover:text-stone-900 dark:hover:text-slate-200'
               }`}
             >
-              <Sparkles className="w-3 h-3 text-amber-400" />
+              <Sparkles className="w-3 h-3 text-bumeran-200 dark:text-amber-400" />
               <span>Solo Transferencias</span>
             </button>
 
@@ -273,10 +273,10 @@ export default function DailyMovementsReport({
                 setFilterOnlyTransfers(false);
                 setSelectedMethodId('all');
               }}
-              className={`px-2.5 py-1 rounded-lg text-xs font-medium border transition select-none active:scale-95 ${
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold border transition select-none active:scale-95 ${
                 !filterOnlyTransfers && selectedMethodId === 'all'
-                  ? 'bg-emerald-500/20 text-emerald-200 border-emerald-500/40 font-semibold'
-                  : 'bg-slate-800/60 text-slate-400 border-slate-700/60 hover:text-slate-200'
+                  ? 'bg-emerald-600 text-white border-emerald-700 shadow-xs'
+                  : 'bg-stone-50 dark:bg-slate-800/60 text-stone-600 dark:text-slate-400 border-stone-200 dark:border-slate-700/60 hover:text-stone-900 dark:hover:text-slate-200'
               }`}
             >
               Todos los medios
@@ -292,10 +292,10 @@ export default function DailyMovementsReport({
                     setFilterOnlyTransfers(false);
                     setSelectedMethodId(m.id);
                   }}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-medium border transition select-none active:scale-95 ${
+                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold border transition select-none active:scale-95 ${
                     isSelected
-                      ? 'bg-emerald-500/20 text-emerald-200 border-emerald-500/40 font-semibold'
-                      : 'bg-slate-800/60 text-slate-400 border-slate-700/60 hover:text-slate-200'
+                      ? 'bg-emerald-600 text-white border-emerald-700 shadow-xs'
+                      : 'bg-stone-50 dark:bg-slate-800/60 text-stone-600 dark:text-slate-400 border-stone-200 dark:border-slate-700/60 hover:text-stone-900 dark:hover:text-slate-200'
                   }`}
                 >
                   {m.name} ({m.count})
@@ -322,44 +322,44 @@ export default function DailyMovementsReport({
           {/* Tarjetas Métricas KPI */}
           <div className="grid grid-cols-2 gap-2.5">
             {/* Total Pagado */}
-            <div className="bg-slate-900/90 border border-emerald-500/20 rounded-xl p-3 shadow-sm">
-              <div className="flex items-center justify-between text-slate-400 mb-1">
-                <span className="text-[11px] font-medium text-emerald-400">Pagos Realizados</span>
-                <ArrowUpRight className="w-4 h-4 text-emerald-400" />
+            <div className="bg-white dark:bg-slate-900/90 border border-emerald-500/20 dark:border-emerald-500/20 rounded-2xl p-3.5 shadow-xs">
+              <div className="flex items-center justify-between text-stone-500 dark:text-slate-400 mb-1">
+                <span className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">Pagos Realizados</span>
+                <ArrowUpRight className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               </div>
-              <div className="text-base font-bold text-white tracking-tight">
+              <div className="text-base font-extrabold text-stone-900 dark:text-white tracking-tight">
                 {formatCurrencyARS(totalPayments)}
               </div>
-              <span className="text-[10px] text-slate-400 block mt-0.5">
+              <span className="text-[10px] text-stone-500 dark:text-slate-400 block mt-0.5">
                 {displayedPayments.length} pago(s) {filterOnlyTransfers ? '(transf.)' : ''}
               </span>
             </div>
 
             {/* Nuevos Gastos en Cta Cte */}
-            <div className="bg-slate-900/90 border border-rose-500/20 rounded-xl p-3 shadow-sm">
-              <div className="flex items-center justify-between text-slate-400 mb-1">
-                <span className="text-[11px] font-medium text-rose-400">Nuevos Gastos Cta Cte</span>
-                <ArrowDownRight className="w-4 h-4 text-rose-400" />
+            <div className="bg-white dark:bg-slate-900/90 border border-rose-500/20 dark:border-rose-500/20 rounded-2xl p-3.5 shadow-xs">
+              <div className="flex items-center justify-between text-stone-500 dark:text-slate-400 mb-1">
+                <span className="text-[11px] font-semibold text-rose-600 dark:text-rose-400">Nuevos Gastos Cta Cte</span>
+                <ArrowDownRight className="w-4 h-4 text-rose-600 dark:text-rose-400" />
               </div>
-              <div className="text-base font-bold text-white tracking-tight">
+              <div className="text-base font-extrabold text-stone-900 dark:text-white tracking-tight">
                 {formatCurrencyARS(totalNewExpenses)}
               </div>
-              <span className="text-[10px] text-slate-400 block mt-0.5">
+              <span className="text-[10px] text-stone-500 dark:text-slate-400 block mt-0.5">
                 {displayedExpenses.length} compra(s) a crédito
               </span>
             </div>
           </div>
 
           {/* Variación Neta del Día */}
-          <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-3 flex items-center justify-between">
-            <div className="flex items-center gap-2">
+          <div className="bg-white dark:bg-slate-900/90 border border-stone-200/90 dark:border-slate-800 rounded-2xl p-3.5 flex items-center justify-between shadow-xs">
+            <div className="flex items-center gap-2.5">
               <div
-                className={`w-7 h-7 rounded-lg flex items-center justify-center ${
+                className={`w-8 h-8 rounded-xl flex items-center justify-center ${
                   netChange < 0
-                    ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                    ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20'
                     : netChange > 0
-                    ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20'
-                    : 'bg-slate-800 text-slate-400'
+                    ? 'bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-500/20'
+                    : 'bg-stone-100 dark:bg-slate-800 text-stone-500 dark:text-slate-400'
                 }`}
               >
                 {netChange < 0 ? (
@@ -371,10 +371,10 @@ export default function DailyMovementsReport({
                 )}
               </div>
               <div>
-                <span className="text-xs font-semibold text-white block">
+                <span className="text-xs font-bold text-stone-900 dark:text-white block">
                   Variación Neta de Deuda
                 </span>
-                <span className="text-[11px] text-slate-400">
+                <span className="text-[11px] text-stone-500 dark:text-slate-400">
                   {netChange < 0
                     ? 'Disminución de deuda acumulada'
                     : netChange > 0
@@ -386,12 +386,12 @@ export default function DailyMovementsReport({
 
             <div className="text-right">
               <span
-                className={`text-sm font-bold block ${
+                className={`text-sm font-extrabold block ${
                   netChange < 0
-                    ? 'text-emerald-400'
+                    ? 'text-emerald-600 dark:text-emerald-400'
                     : netChange > 0
-                    ? 'text-rose-400'
-                    : 'text-slate-300'
+                    ? 'text-rose-600 dark:text-rose-400'
+                    : 'text-stone-700 dark:text-slate-300'
                 }`}
               >
                 {netChange < 0 ? '-' : netChange > 0 ? '+' : ''}
@@ -401,44 +401,44 @@ export default function DailyMovementsReport({
           </div>
 
           {/* Desglose: Transferencias / Pagos Realizados */}
-          <div className="bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
-            <div className="p-3 bg-slate-950/40 border-b border-slate-800/80 flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-400">
+          <div className="bg-white dark:bg-slate-900/90 border border-stone-200/90 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs">
+            <div className="p-3 bg-stone-50 dark:bg-slate-950/40 border-b border-stone-200/70 dark:border-slate-800/80 flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400">
                 <ArrowUpRight className="w-3.5 h-3.5" />
                 <span>Pagos Realizados ({displayedPayments.length})</span>
               </div>
-              <span className="text-xs font-bold text-white">
+              <span className="text-xs font-bold text-stone-900 dark:text-white">
                 {formatCurrencyARS(totalPayments)}
               </span>
             </div>
 
             <div className="p-2 space-y-1.5 max-h-60 overflow-y-auto">
               {displayedPayments.length === 0 ? (
-                <div className="p-4 text-center text-xs text-slate-500">
+                <div className="p-4 text-center text-xs text-stone-400 dark:text-slate-500">
                   No hay pagos registrados para esta fecha y filtro.
                 </div>
               ) : (
                 displayedPayments.map((p) => (
                   <div
                     key={p.id}
-                    className="flex items-center justify-between gap-2 p-2 rounded-lg bg-slate-800/40 border border-slate-800/60 text-xs"
+                    className="flex items-center justify-between gap-2 p-2 rounded-xl bg-stone-50/70 dark:bg-slate-800/40 border border-stone-200/80 dark:border-slate-800/60 text-xs"
                   >
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-1.5">
-                        <span className="font-semibold text-slate-100 truncate">
+                        <span className="font-semibold text-stone-900 dark:text-slate-100 truncate">
                           {p.providerName}
                         </span>
-                        <span className="text-[10px] bg-slate-700/60 text-emerald-300 px-1.5 py-0.2 rounded border border-slate-600/40 shrink-0">
+                        <span className="text-[10px] bg-emerald-50 dark:bg-slate-700/60 text-emerald-700 dark:text-emerald-300 px-1.5 py-0.2 rounded border border-emerald-200 dark:border-slate-600/40 shrink-0 font-medium">
                           {p.paymentMethodName || 'Transferencia'}
                         </span>
                       </div>
-                      <span className="flex items-center gap-1 text-[10px] text-slate-400 mt-0.5 font-mono">
+                      <span className="flex items-center gap-1 text-[10px] text-stone-500 dark:text-slate-400 mt-0.5 font-mono">
                         <Clock className="w-2.5 h-2.5" />
                         {p.timeFormatted} hs
                       </span>
                     </div>
 
-                    <span className="font-bold text-emerald-400 shrink-0">
+                    <span className="font-bold text-emerald-600 dark:text-emerald-400 shrink-0">
                       +{formatCurrencyARS(p.amount)}
                     </span>
                   </div>
@@ -448,46 +448,46 @@ export default function DailyMovementsReport({
           </div>
 
           {/* Desglose: Nuevos Gastos en Cta Cte */}
-          <div className="bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
-            <div className="p-3 bg-slate-950/40 border-b border-slate-800/80 flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-xs font-semibold text-rose-400">
+          <div className="bg-white dark:bg-slate-900/90 border border-stone-200/90 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs">
+            <div className="p-3 bg-stone-50 dark:bg-slate-950/40 border-b border-stone-200/70 dark:border-slate-800/80 flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-rose-600 dark:text-rose-400">
                 <ArrowDownRight className="w-3.5 h-3.5" />
                 <span>Nuevos Gastos en Cta. Cte. ({displayedExpenses.length})</span>
               </div>
-              <span className="text-xs font-bold text-white">
+              <span className="text-xs font-bold text-stone-900 dark:text-white">
                 {formatCurrencyARS(totalNewExpenses)}
               </span>
             </div>
 
             <div className="p-2 space-y-1.5 max-h-60 overflow-y-auto">
               {displayedExpenses.length === 0 ? (
-                <div className="p-4 text-center text-xs text-slate-500">
+                <div className="p-4 text-center text-xs text-stone-400 dark:text-slate-500">
                   No hay nuevos gastos en cuenta corriente para esta fecha.
                 </div>
               ) : (
                 displayedExpenses.map((e) => (
                   <div
                     key={e.id}
-                    className="flex items-center justify-between gap-2 p-2 rounded-lg bg-slate-800/40 border border-slate-800/60 text-xs"
+                    className="flex items-center justify-between gap-2 p-2 rounded-xl bg-stone-50/70 dark:bg-slate-800/40 border border-stone-200/80 dark:border-slate-800/60 text-xs"
                   >
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-1.5">
-                        <span className="font-semibold text-slate-100 truncate">
+                        <span className="font-semibold text-stone-900 dark:text-slate-100 truncate">
                           {e.providerName}
                         </span>
                         {e.expenseId && (
-                          <span className="text-[10px] bg-slate-700/60 text-slate-400 px-1.5 py-0.2 rounded border border-slate-600/40 shrink-0">
+                          <span className="text-[10px] bg-stone-100 dark:bg-slate-700/60 text-stone-600 dark:text-slate-400 px-1.5 py-0.2 rounded border border-stone-200 dark:border-slate-600/40 shrink-0">
                             Gasto #{e.expenseId}
                           </span>
                         )}
                       </div>
-                      <span className="flex items-center gap-1 text-[10px] text-slate-400 mt-0.5 font-mono">
+                      <span className="flex items-center gap-1 text-[10px] text-stone-500 dark:text-slate-400 mt-0.5 font-mono">
                         <Clock className="w-2.5 h-2.5" />
                         {e.timeFormatted} hs
                       </span>
                     </div>
 
-                    <span className="font-bold text-rose-400 shrink-0">
+                    <span className="font-bold text-rose-600 dark:text-rose-400 shrink-0">
                       -{formatCurrencyARS(e.amount)}
                     </span>
                   </div>
@@ -502,7 +502,7 @@ export default function DailyMovementsReport({
               href={deepLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 active:scale-[0.98] transition select-none"
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-md shadow-emerald-600/25 active:scale-[0.98] transition select-none"
             >
               <Share2 className="w-4 h-4 stroke-[2.5]" />
               <span>Enviar Reporte Diario por WhatsApp</span>
@@ -512,16 +512,16 @@ export default function DailyMovementsReport({
               <button
                 type="button"
                 onClick={handleCopy}
-                className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 text-xs font-medium hover:bg-slate-800 active:scale-95 transition"
+                className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-700 text-stone-800 dark:text-slate-200 text-xs font-semibold hover:bg-stone-50 dark:hover:bg-slate-800 active:scale-95 transition shadow-xs"
               >
                 {copied ? (
                   <>
-                    <Check className="w-3.5 h-3.5 text-emerald-400" />
-                    <span className="text-emerald-400 font-semibold">¡Copiado!</span>
+                    <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">¡Copiado!</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-3.5 h-3.5 text-slate-400" />
+                    <Copy className="w-3.5 h-3.5 text-stone-500 dark:text-slate-400" />
                     <span>Copiar Reporte</span>
                   </>
                 )}
@@ -530,9 +530,9 @@ export default function DailyMovementsReport({
               <button
                 type="button"
                 onClick={() => setIsPreviewOpen(true)}
-                className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 text-xs font-medium hover:bg-slate-800 active:scale-95 transition"
+                className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-700 text-stone-800 dark:text-slate-200 text-xs font-semibold hover:bg-stone-50 dark:hover:bg-slate-800 active:scale-95 transition shadow-xs"
               >
-                <Eye className="w-3.5 h-3.5 text-slate-400" />
+                <Eye className="w-3.5 h-3.5 text-stone-500 dark:text-slate-400" />
                 <span>Vista Previa</span>
               </button>
             </div>

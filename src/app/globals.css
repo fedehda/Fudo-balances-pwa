@@ -3,22 +3,61 @@
 @theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-bumeran-50: #fff8f1;
+  --color-bumeran-100: #feefdc;
+  --color-bumeran-200: #fcdbb9;
+  --color-bumeran-300: #f9be8b;
+  --color-bumeran-400: #f49655;
+  --color-bumeran-500: #f07429;
+  --color-bumeran-600: #e1591f;
+  --color-bumeran-700: #bb411c;
+  --color-bumeran-800: #95351e;
+  --color-bumeran-900: #792e1c;
+  --color-bumeran-950: #41140c;
+
+  --color-gold-400: #fbbf24;
+  --color-gold-500: #f59e0b;
+  --color-gold-600: #d97706;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fbf9f5;
+  --foreground: #2b1810;
+  --card-bg: #ffffff;
+  --card-border: #f0e8df;
+  --card-hover: #fcf6ef;
+  --accent-primary: #e1591f;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html.dark {
+  --background: #090a0f;
+  --foreground: #f1f3f8;
+  --card-bg: #0f121d;
+  --card-border: #1b2030;
+  --card-hover: #151928;
+  --accent-primary: #f07429;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Scrollbar refinada */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.4);
 }

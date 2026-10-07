@@ -318,8 +318,8 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
-      {/* Cabecera Móvil */}
+    <div className="min-h-screen bg-stone-100/70 dark:bg-slate-950 text-stone-900 dark:text-slate-100 flex flex-col transition-colors">
+      {/* Cabecera */}
       <Header
         lastSyncedAt={lastSyncedAt}
         isFallback={isFallback}
@@ -332,127 +332,137 @@ export default function Home() {
         pinRequired={pinRequired}
       />
 
-      {/* Contenedor Vertical Mobile-First */}
-      <main className="flex-1 max-w-md w-full mx-auto px-3.5 py-3.5 space-y-3.5 pb-24">
+      {/* Contenedor Responsivo: Mobile columna única, Desktop rejilla fluida */}
+      <main className="flex-1 max-w-6xl w-full mx-auto px-3.5 sm:px-6 py-4 space-y-4 pb-24">
         {/* Selector de Pestañas Principal */}
-        <div className="grid grid-cols-3 bg-slate-900/90 p-1 rounded-xl border border-slate-800 shadow-sm gap-1">
+        <div className="max-w-md mx-auto lg:max-w-none grid grid-cols-3 bg-white/80 dark:bg-slate-900/90 p-1.5 rounded-2xl border border-stone-200/90 dark:border-slate-800 shadow-xs gap-1.5">
           <button
             type="button"
             onClick={() => setActiveTab('balances')}
-            className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-[11px] font-semibold transition active:scale-95 select-none ${
+            className={`flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-bold transition active:scale-95 select-none ${
               activeTab === 'balances'
-                ? 'bg-slate-800 text-white shadow-sm border border-slate-700/80'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-bumeran-500 text-white shadow-xs'
+                : 'text-stone-600 dark:text-slate-400 hover:text-stone-900 dark:hover:text-slate-200 hover:bg-stone-100/60 dark:hover:bg-slate-800/50'
             }`}
           >
-            <Wallet className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+            <Wallet className="w-4 h-4 shrink-0" />
             <span className="truncate">Saldos & Serv.</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('daily')}
-            className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-[11px] font-semibold transition active:scale-95 select-none ${
+            className={`flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-bold transition active:scale-95 select-none ${
               activeTab === 'daily'
-                ? 'bg-slate-800 text-white shadow-sm border border-slate-700/80'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-bumeran-500 text-white shadow-xs'
+                : 'text-stone-600 dark:text-slate-400 hover:text-stone-900 dark:hover:text-slate-200 hover:bg-stone-100/60 dark:hover:bg-slate-800/50'
             }`}
           >
-            <CalendarClock className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+            <CalendarClock className="w-4 h-4 shrink-0" />
             <span className="truncate">Movimientos</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('arqueo')}
-            className={`flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-[11px] font-semibold transition active:scale-95 select-none ${
+            className={`flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-bold transition active:scale-95 select-none ${
               activeTab === 'arqueo'
-                ? 'bg-slate-800 text-white shadow-sm border border-slate-700/80'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-bumeran-500 text-white shadow-xs'
+                : 'text-stone-600 dark:text-slate-400 hover:text-stone-900 dark:hover:text-slate-200 hover:bg-stone-100/60 dark:hover:bg-slate-800/50'
             }`}
           >
-            <Receipt className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+            <Receipt className="w-4 h-4 shrink-0" />
             <span className="truncate">Arqueo Caja</span>
           </button>
         </div>
 
         {/* Vista 1: Saldos Cta Cte & Servicios Recurrentes */}
         {activeTab === 'balances' && (
-          <>
-            {/* Barra de Selección Rápida de Proveedores */}
-            <SelectionBar
-              totalCount={suppliers.length}
-              selectedCount={selectedCount}
-              selectedDebt={totalSelectedDebt}
-              onSelectAll={handleSelectAllSuppliers}
-              onDeselectAll={handleDeselectAllSuppliers}
-            />
+          <div className="lg:grid lg:grid-cols-12 lg:gap-6 lg:items-start space-y-4 lg:space-y-0">
+            {/* Columna Izquierda (Principal en Escritorio, 7 cols) */}
+            <div className="lg:col-span-7 space-y-4 max-w-md mx-auto lg:max-w-none w-full">
+              {/* Barra de Selección Rápida de Proveedores */}
+              <SelectionBar
+                totalCount={suppliers.length}
+                selectedCount={selectedCount}
+                selectedDebt={totalSelectedDebt}
+                onSelectAll={handleSelectAllSuppliers}
+                onDeselectAll={handleDeselectAllSuppliers}
+              />
 
-            {/* Lista de Proveedores con Checkboxes */}
-            <SupplierList
-              suppliers={suppliers}
-              selectedSupplierIds={selectedSupplierIds}
-              upcomingExpenses={upcomingExpenses}
-              onToggleSupplier={handleToggleSupplier}
-            />
+              {/* Lista de Proveedores con Checkboxes */}
+              <SupplierList
+                suppliers={suppliers}
+                selectedSupplierIds={selectedSupplierIds}
+                upcomingExpenses={upcomingExpenses}
+                onToggleSupplier={handleToggleSupplier}
+              />
 
-            {/* Servicios e Impuestos Recurrentes (Luz, Gas, Software, etc.) */}
-            <ServicesSummary
-              services={recurringServices}
-              selectedServiceIds={selectedServiceIds}
-              onToggleService={handleToggleService}
-              onSelectAllServices={handleSelectAllServices}
-              onDeselectAllServices={handleDeselectAllServices}
-              includeInMessage={includeUpcomingExpenses}
-              onToggleInclude={setIncludeUpcomingExpenses}
-            />
-
-            {/* Gastos pendientes no asociados a servicios si existieran */}
-            {upcomingExpenses.length > 0 && (
-              <UpcomingExpenses
-                expenses={upcomingExpenses}
-                categories={categories}
-                selectedCategoryIds={selectedCategoryIds}
-                onToggleCategory={handleToggleCategory}
-                onSelectAllCategories={handleSelectAllCategories}
-                onDeselectAllCategories={handleDeselectAllCategories}
+              {/* Servicios e Impuestos Recurrentes (Luz, Gas, Software, etc.) */}
+              <ServicesSummary
+                services={recurringServices}
+                selectedServiceIds={selectedServiceIds}
+                onToggleService={handleToggleService}
+                onSelectAllServices={handleSelectAllServices}
+                onDeselectAllServices={handleDeselectAllServices}
                 includeInMessage={includeUpcomingExpenses}
                 onToggleInclude={setIncludeUpcomingExpenses}
               />
-            )}
 
-            {/* Panel de Teléfono Destinatario */}
-            <RecipientPanel
-              countryCode={countryCode}
-              setCountryCode={setCountryCode}
-              phoneDigits={phoneDigits}
-              setPhoneDigits={setPhoneDigits}
-            />
+              {/* Gastos pendientes no asociados a servicios si existieran */}
+              {upcomingExpenses.length > 0 && (
+                <UpcomingExpenses
+                  expenses={upcomingExpenses}
+                  categories={categories}
+                  selectedCategoryIds={selectedCategoryIds}
+                  onToggleCategory={handleToggleCategory}
+                  onSelectAllCategories={handleSelectAllCategories}
+                  onDeselectAllCategories={handleDeselectAllCategories}
+                  includeInMessage={includeUpcomingExpenses}
+                  onToggleInclude={setIncludeUpcomingExpenses}
+                />
+              )}
+            </div>
 
-            {/* Acciones de Envío Manual WhatsApp & Portapapeles */}
-            <ActionButtons
-              fullPhone={fullPhone}
-              formattedText={formattedText}
-              hasSelection={selectedCount > 0}
-              onOpenPreview={() => setIsPreviewOpen(true)}
-            />
-          </>
+            {/* Columna Derecha (Panel de Envío & Destinatario sticky en Escritorio, 5 cols) */}
+            <div className="lg:col-span-5 space-y-4 max-w-md mx-auto lg:max-w-none w-full lg:sticky lg:top-20">
+              {/* Panel de Teléfono Destinatario */}
+              <RecipientPanel
+                countryCode={countryCode}
+                setCountryCode={setCountryCode}
+                phoneDigits={phoneDigits}
+                setPhoneDigits={setPhoneDigits}
+              />
+
+              {/* Acciones de Envío Manual WhatsApp & Portapapeles */}
+              <ActionButtons
+                fullPhone={fullPhone}
+                formattedText={formattedText}
+                hasSelection={selectedCount > 0}
+                onOpenPreview={() => setIsPreviewOpen(true)}
+              />
+            </div>
+          </div>
         )}
 
         {/* Vista 2: Reporte Diario de Movimientos (Transferencias y Cta Cte) */}
         {activeTab === 'daily' && (
-          <DailyMovementsReport
-            countryCode={countryCode}
-            phoneDigits={phoneDigits}
-          />
+          <div className="max-w-2xl mx-auto w-full">
+            <DailyMovementsReport
+              countryCode={countryCode}
+              phoneDigits={phoneDigits}
+            />
+          </div>
         )}
 
         {/* Vista 3: Arqueo de Caja y Ventas */}
         {activeTab === 'arqueo' && (
-          <CashCountReportView
-            countryCode={countryCode}
-            phoneDigits={phoneDigits}
-          />
+          <div className="max-w-2xl mx-auto w-full">
+            <CashCountReportView
+              countryCode={countryCode}
+              phoneDigits={phoneDigits}
+            />
+          </div>
         )}
       </main>
 

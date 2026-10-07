@@ -250,15 +250,15 @@ export default function CashCountReportView({
   return (
     <div className="space-y-3.5">
       {/* Controles de Selección de Fecha & Turno */}
-      <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-3.5 shadow-sm space-y-3">
+      <div className="bg-white dark:bg-slate-900/90 border border-stone-200/90 dark:border-slate-800 rounded-2xl p-4 shadow-xs space-y-3">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
-              <Receipt className="w-4 h-4 text-amber-400" />
+            <div className="w-8 h-8 rounded-xl bg-bumeran-50 dark:bg-bumeran-950/60 border border-bumeran-200 dark:border-bumeran-500/30 flex items-center justify-center">
+              <Receipt className="w-4 h-4 text-bumeran-600 dark:text-bumeran-400" />
             </div>
             <div>
-              <h2 className="text-xs font-semibold text-white">Arqueo de Caja</h2>
-              <span className="text-[11px] text-slate-400">Cierre de caja y ventas por turno</span>
+              <h2 className="text-xs font-bold text-stone-900 dark:text-white">Arqueo de Caja</h2>
+              <span className="text-[11px] text-stone-500 dark:text-slate-400">Cierre de caja y ventas por turno</span>
             </div>
           </div>
 
@@ -266,7 +266,7 @@ export default function CashCountReportView({
             type="button"
             onClick={handleRefresh}
             disabled={isRefreshing}
-            className="p-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:text-white transition active:scale-95 disabled:opacity-50"
+            className="p-1.5 rounded-lg bg-stone-100 dark:bg-slate-800 border border-stone-200 dark:border-slate-700 text-stone-600 dark:text-slate-300 hover:text-stone-900 dark:hover:text-white transition active:scale-95 disabled:opacity-50"
             title="Refrescar arqueo"
           >
             <RotateCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
@@ -281,10 +281,10 @@ export default function CashCountReportView({
               setSelectedDate(todayInSalta);
               setSelectedShift('auto');
             }}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition active:scale-95 border ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition active:scale-95 border ${
               selectedDate === todayInSalta
-                ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 shadow-sm'
-                : 'bg-slate-800/80 text-slate-400 border-slate-700/60 hover:text-slate-200'
+                ? 'bg-bumeran-500 text-white border-bumeran-600 shadow-xs'
+                : 'bg-stone-50 dark:bg-slate-800/80 text-stone-600 dark:text-slate-400 border-stone-200 dark:border-slate-700/60 hover:text-stone-900 dark:hover:text-slate-200'
             }`}
           >
             Hoy
@@ -296,10 +296,10 @@ export default function CashCountReportView({
               setSelectedDate(yesterdayInSalta);
               setSelectedShift('auto');
             }}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition active:scale-95 border ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition active:scale-95 border ${
               selectedDate === yesterdayInSalta
-                ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 shadow-sm'
-                : 'bg-slate-800/80 text-slate-400 border-slate-700/60 hover:text-slate-200'
+                ? 'bg-bumeran-500 text-white border-bumeran-600 shadow-xs'
+                : 'bg-stone-50 dark:bg-slate-800/80 text-stone-600 dark:text-slate-400 border-stone-200 dark:border-slate-700/60 hover:text-stone-900 dark:hover:text-slate-200'
             }`}
           >
             Ayer
@@ -315,19 +315,19 @@ export default function CashCountReportView({
                   setSelectedShift('auto');
                 }
               }}
-              className="w-full bg-slate-950/80 border border-slate-700 rounded-lg px-2.5 py-1 text-base sm:text-xs text-slate-200 focus:outline-none focus:border-amber-500 font-mono"
+              className="w-full bg-stone-50 dark:bg-slate-950/80 border border-stone-200 dark:border-slate-700 rounded-lg px-2.5 py-1 text-base sm:text-xs text-stone-800 dark:text-slate-200 focus:outline-none focus:border-bumeran-500 font-mono"
             />
           </div>
         </div>
 
         {/* Selector de Turno */}
-        <div className="pt-2 border-t border-slate-800/70 space-y-1.5">
+        <div className="pt-2 border-t border-stone-200/80 dark:border-slate-800/70 space-y-1.5">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5">
-              <span className="text-[11px] font-medium text-slate-400 block">Turno:</span>
+              <span className="text-[11px] font-medium text-stone-500 dark:text-slate-400 block">Turno:</span>
               {selectedShift === 'auto' && (
-                <span className="text-[10px] font-mono text-amber-300 bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/20 flex items-center gap-1">
-                  <Sparkles className="w-2.5 h-2.5 text-amber-400" />
+                <span className="text-[10px] font-mono text-bumeran-700 dark:text-bumeran-300 bg-bumeran-50 dark:bg-bumeran-500/10 px-1.5 py-0.5 rounded border border-bumeran-200 dark:border-bumeran-500/20 flex items-center gap-1">
+                  <Sparkles className="w-2.5 h-2.5 text-bumeran-600 dark:text-bumeran-400" />
                   <span>Auto: {report?.shiftName || 'Detectando...'}</span>
                 </span>
               )}
@@ -335,10 +335,10 @@ export default function CashCountReportView({
             {report && report.isClosed !== undefined && (
               <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-medium border ${
                 report.isClosed === false
-                  ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
-                  : 'bg-slate-800 text-slate-400 border-slate-700'
+                  ? 'bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30'
+                  : 'bg-stone-100 dark:bg-slate-800 text-stone-600 dark:text-slate-400 border-stone-200 dark:border-slate-700'
               }`}>
-                <span className={`w-1.5 h-1.5 rounded-full ${report.isClosed === false ? 'bg-emerald-400 animate-pulse' : 'bg-slate-500'}`} />
+                <span className={`w-1.5 h-1.5 rounded-full ${report.isClosed === false ? 'bg-emerald-500 animate-pulse' : 'bg-stone-400 dark:bg-slate-500'}`} />
                 {report.isClosed === false ? 'Turno en curso (Fudo)' : 'Turno cerrado'}
               </span>
             )}
@@ -348,26 +348,26 @@ export default function CashCountReportView({
             <button
               type="button"
               onClick={() => setSelectedShift('auto')}
-              className={`py-1.5 px-2 rounded-lg text-xs font-medium border text-center transition active:scale-95 flex items-center justify-center gap-1 ${
+              className={`py-1.5 px-2 rounded-lg text-xs font-semibold border text-center transition active:scale-95 flex items-center justify-center gap-1 ${
                 selectedShift === 'auto'
-                  ? 'bg-amber-500/20 text-amber-200 border-amber-500/40 font-semibold shadow-sm'
-                  : 'bg-slate-800/60 text-slate-400 border-slate-700/60 hover:text-slate-200'
+                  ? 'bg-bumeran-500 text-white border-bumeran-600 shadow-xs'
+                  : 'bg-stone-50 dark:bg-slate-800/60 text-stone-600 dark:text-slate-400 border-stone-200 dark:border-slate-700/60 hover:text-stone-900 dark:hover:text-slate-200'
               }`}
               title="Detectar automáticamente según Fudo y hora actual"
             >
-              <Sparkles className="w-3 h-3 text-amber-400" />
+              <Sparkles className="w-3 h-3 text-bumeran-200 dark:text-bumeran-400" />
               <span>Auto</span>
             </button>
 
             <button
               type="button"
               onClick={() => setSelectedShift('lunch')}
-              className={`py-1.5 px-2 rounded-lg text-xs font-medium border text-center transition active:scale-95 flex items-center justify-center gap-1 ${
+              className={`py-1.5 px-2 rounded-lg text-xs font-semibold border text-center transition active:scale-95 flex items-center justify-center gap-1 ${
                 selectedShift === 'lunch' || (selectedShift === 'auto' && report?.shiftType === 'lunch')
                   ? selectedShift === 'lunch'
-                    ? 'bg-amber-500/20 text-amber-200 border-amber-500/40 font-semibold'
-                    : 'bg-slate-800/90 text-amber-200 border-amber-500/30 font-medium'
-                  : 'bg-slate-800/60 text-slate-400 border-slate-700/60 hover:text-slate-200'
+                    ? 'bg-bumeran-500 text-white border-bumeran-600 shadow-xs'
+                    : 'bg-bumeran-50 dark:bg-slate-800/90 text-bumeran-700 dark:text-bumeran-200 border-bumeran-300 dark:border-bumeran-500/30 font-semibold'
+                  : 'bg-stone-50 dark:bg-slate-800/60 text-stone-600 dark:text-slate-400 border-stone-200 dark:border-slate-700/60 hover:text-stone-900 dark:hover:text-slate-200'
               }`}
             >
               <span>Almuerzo</span>
@@ -379,12 +379,12 @@ export default function CashCountReportView({
             <button
               type="button"
               onClick={() => setSelectedShift('dinner')}
-              className={`py-1.5 px-2 rounded-lg text-xs font-medium border text-center transition active:scale-95 flex items-center justify-center gap-1 ${
+              className={`py-1.5 px-2 rounded-lg text-xs font-semibold border text-center transition active:scale-95 flex items-center justify-center gap-1 ${
                 selectedShift === 'dinner' || (selectedShift === 'auto' && report?.shiftType === 'dinner')
                   ? selectedShift === 'dinner'
-                    ? 'bg-amber-500/20 text-amber-200 border-amber-500/40 font-semibold'
-                    : 'bg-slate-800/90 text-amber-200 border-amber-500/30 font-medium'
-                  : 'bg-slate-800/60 text-slate-400 border-slate-700/60 hover:text-slate-200'
+                    ? 'bg-bumeran-500 text-white border-bumeran-600 shadow-xs'
+                    : 'bg-bumeran-50 dark:bg-slate-800/90 text-bumeran-700 dark:text-bumeran-200 border-bumeran-300 dark:border-bumeran-500/30 font-semibold'
+                  : 'bg-stone-50 dark:bg-slate-800/60 text-stone-600 dark:text-slate-400 border-stone-200 dark:border-slate-700/60 hover:text-stone-900 dark:hover:text-slate-200'
               }`}
             >
               <span>Cena</span>
@@ -396,10 +396,10 @@ export default function CashCountReportView({
             <button
               type="button"
               onClick={() => setSelectedShift('full')}
-              className={`py-1.5 px-2 rounded-lg text-xs font-medium border text-center transition active:scale-95 ${
+              className={`py-1.5 px-2 rounded-lg text-xs font-semibold border text-center transition active:scale-95 ${
                 selectedShift === 'full'
-                  ? 'bg-amber-500/20 text-amber-200 border-amber-500/40 font-semibold'
-                  : 'bg-slate-800/60 text-slate-400 border-slate-700/60 hover:text-slate-200'
+                  ? 'bg-bumeran-500 text-white border-bumeran-600 shadow-xs'
+                  : 'bg-stone-50 dark:bg-slate-800/60 text-stone-600 dark:text-slate-400 border-stone-200 dark:border-slate-700/60 hover:text-stone-900 dark:hover:text-slate-200'
               }`}
             >
               <span>Día Completo</span>
@@ -408,14 +408,14 @@ export default function CashCountReportView({
         </div>
 
         {/* Ajuste de Montos Finales / Declarados por el Usuario */}
-        <div className="pt-2.5 border-t border-slate-800/70 space-y-2">
+        <div className="pt-2.5 border-t border-stone-200/80 dark:border-slate-800/70 space-y-2">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1.5 text-xs text-amber-300 font-semibold">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <div className="flex items-center gap-1.5 text-xs text-bumeran-700 dark:text-bumeran-400 font-semibold">
+              <Sparkles className="w-3.5 h-3.5 text-bumeran-600 dark:text-bumeran-400" />
               <span>Montos del Usuario (Valores Finales)</span>
             </div>
             {report?.userCardPayments !== undefined && (
-              <span className="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded font-mono">
+              <span className="text-[10px] bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20 px-1.5 py-0.5 rounded font-mono">
                 Conteo Fudo Oficial
               </span>
             )}
@@ -423,95 +423,95 @@ export default function CashCountReportView({
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             {/* 1. Caja Inicial */}
-            <div className="bg-slate-950/60 border border-slate-800/90 rounded-lg p-2 space-y-1">
+            <div className="bg-stone-50/80 dark:bg-slate-950/60 border border-stone-200/90 dark:border-slate-800/90 rounded-xl p-2 space-y-1">
               <div className="flex items-center justify-between">
-                <label className="text-[10px] text-slate-400 font-medium flex items-center gap-1">
-                  <Banknote className="w-3 h-3 text-emerald-400" />
+                <label className="text-[10px] text-stone-600 dark:text-slate-400 font-medium flex items-center gap-1">
+                  <Banknote className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                   <span>Caja Inicial:</span>
                 </label>
               </div>
               <div className="relative">
-                <span className="absolute left-2 top-1 text-xs text-slate-500 font-mono">$</span>
+                <span className="absolute left-2 top-1 text-xs text-stone-400 dark:text-slate-500 font-mono">$</span>
                 <input
                   type="number"
                   value={initialCashInput || ''}
                   onChange={(e) => setInitialCashInput(Number(e.target.value) || 0)}
-                  className="w-full bg-slate-900 border border-slate-700/80 rounded pl-5 pr-2 py-0.5 text-base sm:text-xs text-right text-emerald-300 font-bold focus:outline-none focus:border-emerald-500 font-mono"
+                  className="w-full bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-700/80 rounded-lg pl-5 pr-2 py-0.5 text-base sm:text-xs text-right text-emerald-600 dark:text-emerald-300 font-bold focus:outline-none focus:border-emerald-500 font-mono shadow-xs"
                   placeholder="50000"
                 />
               </div>
             </div>
 
             {/* 2. Tarjeta / Payway */}
-            <div className="bg-slate-950/60 border border-slate-800/90 rounded-lg p-2 space-y-1">
+            <div className="bg-stone-50/80 dark:bg-slate-950/60 border border-stone-200/90 dark:border-slate-800/90 rounded-xl p-2 space-y-1">
               <div className="flex items-center justify-between">
-                <label className="text-[10px] text-purple-300 font-medium flex items-center gap-1">
-                  <CreditCard className="w-3 h-3 text-purple-400" />
+                <label className="text-[10px] text-purple-700 dark:text-purple-300 font-medium flex items-center gap-1">
+                  <CreditCard className="w-3 h-3 text-purple-600 dark:text-purple-400" />
                   <span>Tarjeta:</span>
                 </label>
                 {report?.systemCardPayments !== undefined && report.systemCardPayments !== activeCardPayments && (
-                  <span className="text-[9px] text-slate-400 line-through font-mono" title="Monto registrado por el sistema">
+                  <span className="text-[9px] text-stone-400 dark:text-slate-400 line-through font-mono" title="Monto registrado por el sistema">
                     {formatCurrencyARS(report.systemCardPayments)}
                   </span>
                 )}
               </div>
               <div className="relative">
-                <span className="absolute left-2 top-1 text-xs text-slate-500 font-mono">$</span>
+                <span className="absolute left-2 top-1 text-xs text-stone-400 dark:text-slate-500 font-mono">$</span>
                 <input
                   type="number"
                   value={cardPaymentsInput !== null ? cardPaymentsInput : ''}
                   onChange={(e) => setCardPaymentsInput(e.target.value === '' ? null : Number(e.target.value))}
-                  className="w-full bg-slate-900 border border-slate-700/80 rounded pl-5 pr-2 py-0.5 text-base sm:text-xs text-right text-purple-300 font-bold focus:outline-none focus:border-purple-500 font-mono"
+                  className="w-full bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-700/80 rounded-lg pl-5 pr-2 py-0.5 text-base sm:text-xs text-right text-purple-600 dark:text-purple-300 font-bold focus:outline-none focus:border-purple-500 font-mono shadow-xs"
                   placeholder="0"
                 />
               </div>
             </div>
 
             {/* 3. Efectivo Ventas */}
-            <div className="bg-slate-950/60 border border-slate-800/90 rounded-lg p-2 space-y-1">
+            <div className="bg-stone-50/80 dark:bg-slate-950/60 border border-stone-200/90 dark:border-slate-800/90 rounded-xl p-2 space-y-1">
               <div className="flex items-center justify-between">
-                <label className="text-[10px] text-emerald-300 font-medium flex items-center gap-1">
-                  <Banknote className="w-3 h-3 text-emerald-400" />
+                <label className="text-[10px] text-emerald-700 dark:text-emerald-300 font-medium flex items-center gap-1">
+                  <Banknote className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                   <span>Efectivo:</span>
                 </label>
                 {report?.systemCashPayments !== undefined && report.systemCashPayments !== activeCashPayments && (
-                  <span className="text-[9px] text-slate-400 line-through font-mono" title="Monto registrado por el sistema">
+                  <span className="text-[9px] text-stone-400 dark:text-slate-400 line-through font-mono" title="Monto registrado por el sistema">
                     {formatCurrencyARS(report.systemCashPayments)}
                   </span>
                 )}
               </div>
               <div className="relative">
-                <span className="absolute left-2 top-1 text-xs text-slate-500 font-mono">$</span>
+                <span className="absolute left-2 top-1 text-xs text-stone-400 dark:text-slate-500 font-mono">$</span>
                 <input
                   type="number"
                   value={cashPaymentsInput !== null ? cashPaymentsInput : ''}
                   onChange={(e) => setCashPaymentsInput(e.target.value === '' ? null : Number(e.target.value))}
-                  className="w-full bg-slate-900 border border-slate-700/80 rounded pl-5 pr-2 py-0.5 text-base sm:text-xs text-right text-emerald-300 font-bold focus:outline-none focus:border-emerald-500 font-mono"
+                  className="w-full bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-700/80 rounded-lg pl-5 pr-2 py-0.5 text-base sm:text-xs text-right text-emerald-600 dark:text-emerald-300 font-bold focus:outline-none focus:border-emerald-500 font-mono shadow-xs"
                   placeholder="0"
                 />
               </div>
             </div>
 
             {/* 4. Propinas */}
-            <div className="bg-slate-950/60 border border-slate-800/90 rounded-lg p-2 space-y-1">
+            <div className="bg-stone-50/80 dark:bg-slate-950/60 border border-stone-200/90 dark:border-slate-800/90 rounded-xl p-2 space-y-1">
               <div className="flex items-center justify-between">
-                <label className="text-[10px] text-amber-300 font-medium flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-amber-400" />
+                <label className="text-[10px] text-bumeran-700 dark:text-amber-300 font-medium flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-bumeran-600 dark:text-amber-400" />
                   <span>Propinas:</span>
                 </label>
                 {report?.cardTips !== undefined && (report.cardTips > 0 || (report.cashTips || 0) > 0) && (
-                  <span className="text-[9px] text-slate-400 font-mono" title="Desglose Fudo">
+                  <span className="text-[9px] text-stone-500 dark:text-slate-400 font-mono" title="Desglose Fudo">
                     {report.cardTips ? `T:${formatCurrencyARS(report.cardTips)}` : ''}{report.cashTips ? ` E:${formatCurrencyARS(report.cashTips)}` : ''}
                   </span>
                 )}
               </div>
               <div className="relative">
-                <span className="absolute left-2 top-1 text-xs text-slate-500 font-mono">$</span>
+                <span className="absolute left-2 top-1 text-xs text-stone-400 dark:text-slate-500 font-mono">$</span>
                 <input
                   type="number"
                   value={tipsInput !== null ? tipsInput : ''}
                   onChange={(e) => setTipsInput(e.target.value === '' ? null : Number(e.target.value))}
-                  className="w-full bg-slate-900 border border-slate-700/80 rounded pl-5 pr-2 py-0.5 text-base sm:text-xs text-right text-amber-300 font-bold focus:outline-none focus:border-amber-500 font-mono"
+                  className="w-full bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-700/80 rounded-lg pl-5 pr-2 py-0.5 text-base sm:text-xs text-right text-bumeran-600 dark:text-amber-300 font-bold focus:outline-none focus:border-bumeran-500 font-mono shadow-xs"
                   placeholder="0"
                 />
               </div>
@@ -536,34 +536,34 @@ export default function CashCountReportView({
           {/* Tarjetas Métricas KPI */}
           <div className="grid grid-cols-2 gap-2.5">
             {/* Venta Total */}
-            <div className="bg-slate-900/90 border border-blue-500/20 rounded-xl p-3 shadow-sm">
-              <div className="flex items-center justify-between text-slate-400 mb-1">
-                <span className="text-[11px] font-medium text-blue-400">Venta Total</span>
-                <DollarSign className="w-4 h-4 text-blue-400" />
+            <div className="bg-white dark:bg-slate-900/90 border border-blue-500/20 dark:border-blue-500/20 rounded-2xl p-3.5 shadow-xs">
+              <div className="flex items-center justify-between text-stone-500 dark:text-slate-400 mb-1">
+                <span className="text-[11px] font-semibold text-blue-600 dark:text-blue-400">Venta Total</span>
+                <DollarSign className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               </div>
-              <div className="text-base font-bold text-white tracking-tight">
+              <div className="text-base font-extrabold text-stone-900 dark:text-white tracking-tight">
                 {formatCurrencyARS(activeTotalSales)}
               </div>
-              <span className="text-[10px] text-slate-400 block mt-0.5">
+              <span className="text-[10px] text-stone-500 dark:text-slate-400 block mt-0.5">
                 Total cobrado en el turno
               </span>
             </div>
 
             {/* Pagos con Tarjeta (Payway) */}
-            <div className="bg-slate-900/90 border border-purple-500/20 rounded-xl p-3 shadow-sm">
-              <div className="flex items-center justify-between text-slate-400 mb-1">
-                <span className="text-[11px] font-medium text-purple-400">Pagos con Tarjeta</span>
-                <CreditCard className="w-4 h-4 text-purple-400" />
+            <div className="bg-white dark:bg-slate-900/90 border border-purple-500/20 dark:border-purple-500/20 rounded-2xl p-3.5 shadow-xs">
+              <div className="flex items-center justify-between text-stone-500 dark:text-slate-400 mb-1">
+                <span className="text-[11px] font-semibold text-purple-600 dark:text-purple-400">Pagos con Tarjeta</span>
+                <CreditCard className="w-4 h-4 text-purple-600 dark:text-purple-400" />
               </div>
-              <div className="text-base font-bold text-white tracking-tight">
+              <div className="text-base font-extrabold text-stone-900 dark:text-white tracking-tight">
                 {formatCurrencyARS(activeCardPayments)}
               </div>
               <div className="flex items-center justify-between mt-0.5">
-                <span className="text-[10px] text-slate-400">
+                <span className="text-[10px] text-stone-500 dark:text-slate-400">
                   Payway / Terminal
                 </span>
                 {report.systemCardPayments !== undefined && report.systemCardPayments !== activeCardPayments && (
-                  <span className="text-[9px] text-amber-400 font-mono">
+                  <span className="text-[9px] text-bumeran-600 dark:text-amber-400 font-mono font-semibold">
                     Valor usuario
                   </span>
                 )}
@@ -571,20 +571,20 @@ export default function CashCountReportView({
             </div>
 
             {/* Pagos con Efectivo */}
-            <div className="bg-slate-900/90 border border-emerald-500/20 rounded-xl p-3 shadow-sm">
-              <div className="flex items-center justify-between text-slate-400 mb-1">
-                <span className="text-[11px] font-medium text-emerald-400">Pagos con Efectivo</span>
-                <Banknote className="w-4 h-4 text-emerald-400" />
+            <div className="bg-white dark:bg-slate-900/90 border border-emerald-500/20 dark:border-emerald-500/20 rounded-2xl p-3.5 shadow-xs">
+              <div className="flex items-center justify-between text-stone-500 dark:text-slate-400 mb-1">
+                <span className="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">Pagos con Efectivo</span>
+                <Banknote className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               </div>
-              <div className="text-base font-bold text-white tracking-tight">
+              <div className="text-base font-extrabold text-stone-900 dark:text-white tracking-tight">
                 {formatCurrencyARS(activeCashPayments)}
               </div>
               <div className="flex items-center justify-between mt-0.5">
-                <span className="text-[10px] text-slate-400">
+                <span className="text-[10px] text-stone-500 dark:text-slate-400">
                   Ventas en efectivo
                 </span>
                 {report.systemCashPayments !== undefined && report.systemCashPayments !== activeCashPayments && (
-                  <span className="text-[9px] text-amber-400 font-mono">
+                  <span className="text-[9px] text-bumeran-600 dark:text-amber-400 font-mono font-semibold">
                     Valor usuario
                   </span>
                 )}
@@ -592,37 +592,37 @@ export default function CashCountReportView({
             </div>
 
             {/* Total Egresos (Gastos + Retiros) */}
-            <div className="bg-slate-900/90 border border-rose-500/20 rounded-xl p-3 shadow-sm">
-              <div className="flex items-center justify-between text-slate-400 mb-1">
-                <span className="text-[11px] font-medium text-rose-400">Total Egresos</span>
-                <ArrowDownRight className="w-4 h-4 text-rose-400" />
+            <div className="bg-white dark:bg-slate-900/90 border border-rose-500/20 dark:border-rose-500/20 rounded-2xl p-3.5 shadow-xs">
+              <div className="flex items-center justify-between text-stone-500 dark:text-slate-400 mb-1">
+                <span className="text-[11px] font-semibold text-rose-600 dark:text-rose-400">Total Egresos</span>
+                <ArrowDownRight className="w-4 h-4 text-rose-600 dark:text-rose-400" />
               </div>
-              <div className="text-base font-bold text-white tracking-tight">
+              <div className="text-base font-extrabold text-stone-900 dark:text-white tracking-tight">
                 {formatCurrencyARS(totalEgresos)}
               </div>
-              <span className="text-[10px] text-slate-400 block mt-0.5">
+              <span className="text-[10px] text-stone-500 dark:text-slate-400 block mt-0.5">
                 Gastos + Retiros de caja
               </span>
             </div>
 
             {/* Propinas */}
             {activeTips > 0 && (
-              <div className="bg-slate-900/90 border border-amber-500/20 rounded-xl p-3 shadow-sm col-span-2">
-                <div className="flex items-center justify-between text-slate-400 mb-1">
-                  <span className="text-[11px] font-medium text-amber-400">Propinas Registradas</span>
-                  <Sparkles className="w-4 h-4 text-amber-400" />
+              <div className="bg-white dark:bg-slate-900/90 border border-bumeran-500/20 dark:border-amber-500/20 rounded-2xl p-3.5 shadow-xs col-span-2">
+                <div className="flex items-center justify-between text-stone-500 dark:text-slate-400 mb-1">
+                  <span className="text-[11px] font-semibold text-bumeran-600 dark:text-amber-400">Propinas Registradas</span>
+                  <Sparkles className="w-4 h-4 text-bumeran-600 dark:text-amber-400" />
                 </div>
-                <div className="text-base font-bold text-white tracking-tight">
+                <div className="text-base font-extrabold text-stone-900 dark:text-white tracking-tight">
                   {formatCurrencyARS(activeTips)}
                 </div>
-                <div className="flex items-center justify-between mt-0.5 text-[10px] text-slate-400">
+                <div className="flex items-center justify-between mt-0.5 text-[10px] text-stone-500 dark:text-slate-400">
                   <span>
                     {report.cardTips ? `Tarjeta: ${formatCurrencyARS(report.cardTips)}` : ''}
                     {report.cardTips && report.cashTips ? ' • ' : ''}
                     {report.cashTips ? `Efectivo: ${formatCurrencyARS(report.cashTips)}` : ''}
                   </span>
                   {report.tips !== activeTips && (
-                    <span className="text-[9px] text-amber-400 font-mono">
+                    <span className="text-[9px] text-bumeran-600 dark:text-amber-400 font-mono font-semibold">
                       Editado manual
                     </span>
                   )}
@@ -632,14 +632,14 @@ export default function CashCountReportView({
           </div>
 
           {/* TARJETA DESTACADA: Restante Total en Efectivo */}
-          <div className="bg-gradient-to-r from-emerald-950/70 via-slate-900 to-emerald-950/70 border border-emerald-500/40 rounded-xl p-4 shadow-md text-center space-y-1.5">
-            <span className="text-xs font-semibold text-emerald-300 uppercase tracking-wider block">
+          <div className="bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-800 dark:from-emerald-950/70 dark:via-slate-900 dark:to-emerald-950/70 border border-emerald-400/30 dark:border-emerald-500/40 rounded-2xl p-4 shadow-md text-center space-y-1.5 text-white">
+            <span className="text-xs font-bold text-emerald-100 dark:text-emerald-300 uppercase tracking-wider block">
               💵 Restante Total en Efectivo en Caja
             </span>
             <div className="text-2xl font-black text-white tracking-tight">
               {formatCurrencyARS(finalRemainingCash)}
             </div>
-            <div className="text-[11px] text-slate-400 flex items-center justify-center gap-1.5 flex-wrap font-mono">
+            <div className="text-[11px] text-emerald-100/90 dark:text-slate-400 flex items-center justify-center gap-1.5 flex-wrap font-mono">
               <span>Fondo {formatCurrencyARS(initialCashInput)}</span>
               <span>+</span>
               <span>Efectivo {formatCurrencyARS(activeCashPayments)}</span>
@@ -648,47 +648,47 @@ export default function CashCountReportView({
             </div>
           </div>
 
-          {/* Sección: Gastos de Caja Principal (detallados y en lista) */}
-          <div className="bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
-            <div className="p-3 bg-slate-950/40 border-b border-slate-800/80 flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-xs font-semibold text-rose-400">
+          {/* Sección: Gastos de Caja Principal */}
+          <div className="bg-white dark:bg-slate-900/90 border border-stone-200/90 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs">
+            <div className="p-3 bg-stone-50 dark:bg-slate-950/40 border-b border-stone-200/70 dark:border-slate-800/80 flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-rose-600 dark:text-rose-400">
                 <ArrowDownRight className="w-3.5 h-3.5" />
                 <span>Egresos: Gastos de Caja ({report.expenses.length})</span>
               </div>
-              <span className="text-xs font-bold text-white">
+              <span className="text-xs font-bold text-stone-900 dark:text-white">
                 {formatCurrencyARS(report.totalExpenses)}
               </span>
             </div>
 
             <div className="p-2 space-y-1.5 max-h-60 overflow-y-auto">
               {report.expenses.length === 0 ? (
-                <div className="p-4 text-center text-xs text-slate-500">
+                <div className="p-4 text-center text-xs text-stone-400 dark:text-slate-500">
                   No hay gastos de caja registrados en este turno.
                 </div>
               ) : (
                 report.expenses.map((exp) => (
                   <div
                     key={exp.id}
-                    className="flex items-center justify-between gap-2 p-2 rounded-lg bg-slate-800/40 border border-slate-800/60 text-xs"
+                    className="flex items-center justify-between gap-2 p-2 rounded-xl bg-stone-50/70 dark:bg-slate-800/40 border border-stone-200/80 dark:border-slate-800/60 text-xs"
                   >
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-1.5">
-                        <span className="font-semibold text-slate-100 truncate">
+                        <span className="font-semibold text-stone-900 dark:text-slate-100 truncate">
                           {exp.providerName}
                         </span>
                         {exp.description && (
-                          <span className="text-[10px] text-slate-400 truncate hidden sm:inline">
+                          <span className="text-[10px] text-stone-500 dark:text-slate-400 truncate hidden sm:inline">
                             ({exp.description})
                           </span>
                         )}
                       </div>
-                      <span className="flex items-center gap-1 text-[10px] text-slate-400 mt-0.5 font-mono">
+                      <span className="flex items-center gap-1 text-[10px] text-stone-500 dark:text-slate-400 mt-0.5 font-mono">
                         <Clock className="w-2.5 h-2.5" />
                         {exp.timeFormatted} hs
                       </span>
                     </div>
 
-                    <span className="font-bold text-rose-400 shrink-0">
+                    <span className="font-bold text-rose-600 dark:text-rose-400 shrink-0">
                       -{formatCurrencyARS(exp.amount)}
                     </span>
                   </div>
@@ -697,18 +697,18 @@ export default function CashCountReportView({
             </div>
           </div>
 
-          {/* Sección: Movimientos de Caja (detallados y en lista) */}
-          <div className="bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
-            <div className="p-3 bg-slate-950/40 border-b border-slate-800/80 flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-xs font-semibold text-amber-400">
-                <Sparkles className="w-3.5 h-3.5" />
+          {/* Sección: Movimientos de Caja */}
+          <div className="bg-white dark:bg-slate-900/90 border border-stone-200/90 dark:border-slate-800 rounded-2xl overflow-hidden shadow-xs">
+            <div className="p-3 bg-stone-50 dark:bg-slate-950/40 border-b border-stone-200/70 dark:border-slate-800/80 flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-bumeran-700 dark:text-amber-400">
+                <Sparkles className="w-3.5 h-3.5 text-bumeran-600 dark:text-amber-400" />
                 <span>Egresos: Movimientos de Caja ({combinedMovements.length})</span>
               </div>
 
               <button
                 type="button"
                 onClick={() => setShowAddMovement(!showAddMovement)}
-                className="flex items-center gap-1 text-[11px] px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 active:scale-95 transition"
+                className="flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-lg bg-stone-100 dark:bg-slate-800 hover:bg-stone-200 dark:hover:bg-slate-700 text-stone-700 dark:text-slate-200 border border-stone-200 dark:border-slate-700 active:scale-95 transition font-medium"
               >
                 <Plus className="w-3 h-3" />
                 <span>Agregar</span>
@@ -719,13 +719,13 @@ export default function CashCountReportView({
             {showAddMovement && (
               <form
                 onSubmit={handleAddMovement}
-                className="p-3 bg-slate-950/60 border-b border-slate-800/80 space-y-2"
+                className="p-3 bg-stone-50 dark:bg-slate-950/60 border-b border-stone-200/70 dark:border-slate-800/80 space-y-2"
               >
                 <div className="grid grid-cols-3 gap-2">
                   <select
                     value={newMovType}
                     onChange={(e) => setNewMovType(e.target.value as 'outflow' | 'inflow')}
-                    className="bg-slate-900 border border-slate-700 rounded-lg px-2 py-1 text-xs text-slate-200 focus:outline-none"
+                    className="bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-700 rounded-lg px-2 py-1 text-xs text-stone-800 dark:text-slate-200 focus:outline-none"
                   >
                     <option value="outflow">Retiro (-)</option>
                     <option value="inflow">Ingreso (+)</option>
@@ -736,7 +736,7 @@ export default function CashCountReportView({
                     value={newMovAmt}
                     onChange={(e) => setNewMovAmt(e.target.value)}
                     placeholder="Monto"
-                    className="bg-slate-900 border border-slate-700 rounded-lg px-2 py-1 text-base sm:text-xs text-slate-200 focus:outline-none font-mono"
+                    className="bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-700 rounded-lg px-2 py-1 text-base sm:text-xs text-stone-800 dark:text-slate-200 focus:outline-none font-mono"
                     required
                   />
 
@@ -745,7 +745,7 @@ export default function CashCountReportView({
                     value={newMovDesc}
                     onChange={(e) => setNewMovDesc(e.target.value)}
                     placeholder="Motivo (ej. Retiro socio)"
-                    className="bg-slate-900 border border-slate-700 rounded-lg px-2 py-1 text-base sm:text-xs text-slate-200 focus:outline-none"
+                    className="bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-700 rounded-lg px-2 py-1 text-base sm:text-xs text-stone-800 dark:text-slate-200 focus:outline-none"
                     required
                   />
                 </div>
@@ -754,13 +754,13 @@ export default function CashCountReportView({
                   <button
                     type="button"
                     onClick={() => setShowAddMovement(false)}
-                    className="text-[11px] text-slate-400 hover:text-white px-2 py-1"
+                    className="text-[11px] text-stone-500 dark:text-slate-400 hover:text-stone-800 dark:hover:text-white px-2 py-1"
                   >
                     Cancelar
                   </button>
                   <button
                     type="submit"
-                    className="text-[11px] font-semibold bg-amber-500 hover:bg-amber-400 text-slate-950 px-3 py-1 rounded-md active:scale-95"
+                    className="text-[11px] font-semibold bg-bumeran-500 hover:bg-bumeran-600 text-white px-3 py-1 rounded-md active:scale-95 shadow-xs transition"
                   >
                     Guardar
                   </button>
@@ -770,31 +770,31 @@ export default function CashCountReportView({
 
             <div className="p-2 space-y-1.5 max-h-48 overflow-y-auto">
               {combinedMovements.length === 0 ? (
-                <div className="p-3 text-center text-xs text-slate-500">
+                <div className="p-3 text-center text-xs text-stone-400 dark:text-slate-500">
                   Sin movimientos manuales registrados para este turno.
                 </div>
               ) : (
                 combinedMovements.map((mov) => (
                   <div
                     key={mov.id}
-                    className="flex items-center justify-between gap-2 p-2 rounded-lg bg-slate-800/40 border border-slate-800/60 text-xs"
+                    className="flex items-center justify-between gap-2 p-2 rounded-xl bg-stone-50/70 dark:bg-slate-800/40 border border-stone-200/80 dark:border-slate-800/60 text-xs"
                   >
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-1.5">
-                        <span className="font-semibold text-slate-100">
+                        <span className="font-semibold text-stone-900 dark:text-slate-100">
                           {mov.description}
                         </span>
                         <span
                           className={`text-[10px] px-1.5 py-0.2 rounded font-medium ${
                             mov.type === 'outflow'
-                              ? 'bg-rose-500/10 text-rose-300'
-                              : 'bg-emerald-500/10 text-emerald-300'
+                              ? 'bg-rose-50 dark:bg-rose-500/10 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-500/20'
+                              : 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/20'
                           }`}
                         >
                           {mov.type === 'outflow' ? 'Retiro' : 'Ingreso'}
                         </span>
                       </div>
-                      <span className="text-[10px] text-slate-400 mt-0.5 block font-mono">
+                      <span className="text-[10px] text-stone-500 dark:text-slate-400 mt-0.5 block font-mono">
                         {mov.timeFormatted} hs
                       </span>
                     </div>
@@ -802,7 +802,7 @@ export default function CashCountReportView({
                     <div className="flex items-center gap-2 shrink-0">
                       <span
                         className={`font-bold ${
-                          mov.type === 'outflow' ? 'text-rose-400' : 'text-emerald-400'
+                          mov.type === 'outflow' ? 'text-rose-600 dark:text-rose-400' : 'text-emerald-600 dark:text-emerald-400'
                         }`}
                       >
                         {mov.type === 'outflow' ? '-' : '+'}
@@ -813,7 +813,7 @@ export default function CashCountReportView({
                         <button
                           type="button"
                           onClick={() => handleRemoveMovement(mov.id)}
-                          className="p-1 text-slate-500 hover:text-rose-400 transition"
+                          className="p-1 text-stone-400 dark:text-slate-500 hover:text-rose-500 transition"
                           title="Eliminar movimiento manual"
                         >
                           <Trash2 className="w-3 h-3" />
@@ -828,8 +828,8 @@ export default function CashCountReportView({
 
           {/* Nota informativa de permisos de Fudo si corresponde */}
           {!report.hasApiPermissions && (
-            <div className="p-3 bg-slate-900/60 border border-slate-800 rounded-xl flex items-start gap-2.5 text-slate-400 text-xs">
-              <Info className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+            <div className="p-3 bg-stone-50 dark:bg-slate-900/60 border border-stone-200/90 dark:border-slate-800 rounded-2xl flex items-start gap-2.5 text-stone-600 dark:text-slate-400 text-xs">
+              <Info className="w-4 h-4 text-bumeran-600 dark:text-amber-400 shrink-0 mt-0.5" />
               <span>
                 Los cobros, ventas con tarjeta, efectivo y gastos de caja se sincronizan automáticamente. Si deseas sincronizar el fondo de caja inicial directo desde Fudo, puedes asignar el rol <strong>Admin</strong> o <strong>Auditoría</strong> en Administración &gt; Usuarios en Fudo.
               </span>
@@ -842,7 +842,7 @@ export default function CashCountReportView({
               href={deepLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 active:scale-[0.98] transition select-none"
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-md shadow-emerald-600/25 active:scale-[0.98] transition select-none"
             >
               <Share2 className="w-4 h-4 stroke-[2.5]" />
               <span>Enviar Arqueo por WhatsApp</span>
@@ -852,16 +852,16 @@ export default function CashCountReportView({
               <button
                 type="button"
                 onClick={handleCopy}
-                className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 text-xs font-medium hover:bg-slate-800 active:scale-95 transition"
+                className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-700 text-stone-800 dark:text-slate-200 text-xs font-semibold hover:bg-stone-50 dark:hover:bg-slate-800 active:scale-95 transition shadow-xs"
               >
                 {copied ? (
                   <>
-                    <Check className="w-3.5 h-3.5 text-emerald-400" />
-                    <span className="text-emerald-400 font-semibold">¡Copiado!</span>
+                    <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">¡Copiado!</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-3.5 h-3.5 text-slate-400" />
+                    <Copy className="w-3.5 h-3.5 text-stone-500 dark:text-slate-400" />
                     <span>Copiar Arqueo</span>
                   </>
                 )}
@@ -870,9 +870,9 @@ export default function CashCountReportView({
               <button
                 type="button"
                 onClick={() => setIsPreviewOpen(true)}
-                className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 text-xs font-medium hover:bg-slate-800 active:scale-95 transition"
+                className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-700 text-stone-800 dark:text-slate-200 text-xs font-semibold hover:bg-stone-50 dark:hover:bg-slate-800 active:scale-95 transition shadow-xs"
               >
-                <Eye className="w-3.5 h-3.5 text-slate-400" />
+                <Eye className="w-3.5 h-3.5 text-stone-500 dark:text-slate-400" />
                 <span>Vista Previa</span>
               </button>
             </div>

@@ -144,27 +144,27 @@ export default function ScheduleModal({
       closedby="any"
       onClose={onClose}
       aria-labelledby="schedule-modal-title"
-      className="m-auto bg-slate-900 border border-slate-700/80 rounded-2xl p-0 w-full max-w-md text-slate-100 shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm open:animate-in open:fade-in open:zoom-in-95"
+      className="m-auto bg-white dark:bg-slate-900 border border-stone-200/90 dark:border-slate-700/80 rounded-3xl p-0 w-full max-w-md text-stone-800 dark:text-slate-100 shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm open:animate-in open:fade-in open:zoom-in-95"
     >
       <div className="p-4 sm:p-5">
         {/* Cabecera del modal */}
-        <div className="flex items-center justify-between pb-3.5 border-b border-slate-800">
+        <div className="flex items-center justify-between pb-3.5 border-b border-stone-200/80 dark:border-slate-800">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+            <div className="w-8 h-8 rounded-xl bg-bumeran-50 dark:bg-bumeran-950/60 border border-bumeran-200 dark:border-bumeran-500/30 flex items-center justify-center text-bumeran-600 dark:text-bumeran-400">
               <Clock className="w-4 h-4" />
             </div>
             <div>
-              <h2 id="schedule-modal-title" className="text-sm font-bold text-white">
+              <h2 id="schedule-modal-title" className="text-sm font-bold text-stone-900 dark:text-white">
                 Automatización Programada
               </h2>
-              <p className="text-[11px] text-slate-400">Envíos diarios desatendidos vía WhatsApp</p>
+              <p className="text-[11px] text-stone-500 dark:text-slate-400">Envíos diarios desatendidos vía WhatsApp</p>
             </div>
           </div>
 
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+            className="p-1.5 rounded-lg text-stone-400 dark:text-slate-400 hover:text-stone-900 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-slate-800 transition"
             aria-label="Cerrar modal"
           >
             <X className="w-4 h-4" />
@@ -174,12 +174,12 @@ export default function ScheduleModal({
         {/* Formulario */}
         <form onSubmit={handleSave} className="space-y-4 pt-4">
           {/* Toggle Principal ON / OFF */}
-          <div className="flex items-center justify-between p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+          <div className="flex items-center justify-between p-3 rounded-2xl bg-stone-50 dark:bg-slate-800/60 border border-stone-200 dark:border-slate-700/60">
             <div>
-              <label htmlFor="daily-toggle" className="text-xs font-semibold text-white block cursor-pointer">
+              <label htmlFor="daily-toggle" className="text-xs font-bold text-stone-900 dark:text-white block cursor-pointer">
                 Envío diario automático
               </label>
-              <span className="text-[11px] text-slate-400">
+              <span className="text-[11px] text-stone-500 dark:text-slate-400">
                 {enabled ? 'La regla despachará todos los días a la hora fijada' : 'Automatización actualmente inactiva'}
               </span>
             </div>
@@ -191,7 +191,7 @@ export default function ScheduleModal({
               aria-checked={enabled}
               onClick={() => setEnabled(!enabled)}
               className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                enabled ? 'bg-emerald-500' : 'bg-slate-700'
+                enabled ? 'bg-bumeran-500' : 'bg-stone-300 dark:bg-slate-700'
               }`}
             >
               <span
@@ -204,22 +204,22 @@ export default function ScheduleModal({
 
           {/* Hora de envío (Selector time nativo) */}
           <div className="space-y-1.5">
-            <label className="text-xs font-medium text-slate-300 flex items-center justify-between">
+            <label className="text-xs font-semibold text-stone-700 dark:text-slate-300 flex items-center justify-between">
               <span>Hora de envío (Zona Salta / Argentina)</span>
-              <span className="text-[10px] text-slate-400">Formato 24 hs</span>
+              <span className="text-[10px] text-stone-500 dark:text-slate-400">Formato 24 hs</span>
             </label>
             <input
               type="time"
               required
               value={targetTime}
               onChange={(e) => setTargetTime(e.target.value)}
-              className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white font-mono focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full bg-stone-50 dark:bg-slate-800 border border-stone-200 dark:border-slate-700 rounded-xl px-3 py-2 text-sm text-stone-900 dark:text-white font-mono focus:outline-none focus:ring-1 focus:ring-bumeran-500 shadow-xs"
             />
           </div>
 
           {/* Teléfono Destinatario */}
           <div className="space-y-1.5">
-            <label className="text-xs font-medium text-slate-300 block">
+            <label className="text-xs font-semibold text-stone-700 dark:text-slate-300 block">
               Teléfono de destino para la automatización
             </label>
             <input
@@ -228,23 +228,23 @@ export default function ScheduleModal({
               placeholder="Ej: 5493871234567"
               value={targetPhone}
               onChange={(e) => setTargetPhone(e.target.value)}
-              className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+              className="w-full bg-stone-50 dark:bg-slate-800 border border-stone-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-mono text-stone-900 dark:text-white placeholder-stone-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-bumeran-500 shadow-xs"
             />
-            <p className="text-[10px] text-slate-400">
+            <p className="text-[10px] text-stone-500 dark:text-slate-400">
               Formato internacional E.164 sin signos + ni espacios (ej: 5493874123456).
             </p>
           </div>
 
           {/* Criterio de Selección */}
           <div className="space-y-2">
-            <span className="text-xs font-medium text-slate-300 block">Criterio de consolidado</span>
+            <span className="text-xs font-semibold text-stone-700 dark:text-slate-300 block">Criterio de consolidado</span>
             <div className="space-y-2">
               <label
                 onClick={() => setAutoSelectAll(true)}
-                className={`flex items-start gap-2.5 p-2.5 rounded-xl border text-xs cursor-pointer transition ${
+                className={`flex items-start gap-2.5 p-3 rounded-2xl border text-xs cursor-pointer transition ${
                   autoSelectAll
-                    ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-200'
-                    : 'bg-slate-800/50 border-slate-700/60 text-slate-300'
+                    ? 'bg-bumeran-50 dark:bg-bumeran-950/40 border-bumeran-300 dark:border-bumeran-500/40 text-bumeran-800 dark:text-bumeran-200'
+                    : 'bg-stone-50/80 dark:bg-slate-800/50 border-stone-200 dark:border-slate-700/60 text-stone-700 dark:text-slate-300'
                 }`}
               >
                 <input
@@ -252,11 +252,11 @@ export default function ScheduleModal({
                   name="criteria"
                   checked={autoSelectAll}
                   onChange={() => setAutoSelectAll(true)}
-                  className="mt-0.5"
+                  className="mt-0.5 accent-bumeran-600"
                 />
                 <div>
-                  <span className="font-semibold block">Incluir siempre todos los que tengan deuda</span>
-                  <span className="text-[10px] text-slate-400">
+                  <span className="font-bold block text-stone-900 dark:text-white">Incluir siempre todos los que tengan deuda</span>
+                  <span className="text-[10px] text-stone-500 dark:text-slate-400">
                     Toma automáticamente cualquier proveedor con balance &gt; 0 al momento del disparo.
                   </span>
                 </div>
@@ -264,10 +264,10 @@ export default function ScheduleModal({
 
               <label
                 onClick={() => setAutoSelectAll(false)}
-                className={`flex items-start gap-2.5 p-2.5 rounded-xl border text-xs cursor-pointer transition ${
+                className={`flex items-start gap-2.5 p-3 rounded-2xl border text-xs cursor-pointer transition ${
                   !autoSelectAll
-                    ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-200'
-                    : 'bg-slate-800/50 border-slate-700/60 text-slate-300'
+                    ? 'bg-bumeran-50 dark:bg-bumeran-950/40 border-bumeran-300 dark:border-bumeran-500/40 text-bumeran-800 dark:text-bumeran-200'
+                    : 'bg-stone-50/80 dark:bg-slate-800/50 border-stone-200 dark:border-slate-700/60 text-stone-700 dark:text-slate-300'
                 }`}
               >
                 <input
@@ -275,11 +275,11 @@ export default function ScheduleModal({
                   name="criteria"
                   checked={!autoSelectAll}
                   onChange={() => setAutoSelectAll(false)}
-                  className="mt-0.5"
+                  className="mt-0.5 accent-bumeran-600"
                 />
                 <div>
-                  <span className="font-semibold block">Enviar solo los proveedores seleccionados abajo</span>
-                  <span className="text-[10px] text-slate-400">
+                  <span className="font-bold block text-stone-900 dark:text-white">Enviar solo los proveedores seleccionados abajo</span>
+                  <span className="text-[10px] text-stone-500 dark:text-slate-400">
                     Mantendrá fija la lista de proveedores marcados ({selectedCount} actualmente).
                   </span>
                 </div>
@@ -289,9 +289,9 @@ export default function ScheduleModal({
 
           {/* Estado de última ejecución */}
           {config.lastRunAt && (
-            <div className="p-2.5 rounded-lg bg-slate-800/40 border border-slate-700/40 text-[11px] text-slate-300 flex items-center justify-between">
+            <div className="p-2.5 rounded-xl bg-stone-50 dark:bg-slate-800/40 border border-stone-200 dark:border-slate-700/40 text-[11px] text-stone-600 dark:text-slate-300 flex items-center justify-between">
               <span>Última ejecución:</span>
-              <span className="font-medium text-slate-200">
+              <span className="font-semibold text-stone-800 dark:text-slate-200">
                 {formatRelativeTime(config.lastRunAt)} ({config.lastRunStatus || 'OK'})
               </span>
             </div>
@@ -300,10 +300,10 @@ export default function ScheduleModal({
           {/* Resultado de prueba si hubo */}
           {testResult && (
             <div
-              className={`p-2.5 rounded-lg text-xs border ${
+              className={`p-2.5 rounded-xl text-xs border ${
                 testResult.success
-                  ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
-                  : 'bg-red-500/10 border-red-500/30 text-red-300'
+                  ? 'bg-emerald-50 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-300'
+                  : 'bg-rose-50 dark:bg-red-500/10 border-rose-200 dark:border-red-500/30 text-rose-700 dark:text-red-300'
               }`}
             >
               {testResult.message}
@@ -315,7 +315,7 @@ export default function ScheduleModal({
             <button
               type="submit"
               disabled={isSaving}
-              className="w-full py-2.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 disabled:opacity-50"
+              className="w-full py-2.5 px-4 rounded-xl bg-bumeran-500 hover:bg-bumeran-600 text-white font-bold text-xs flex items-center justify-center gap-2 transition active:scale-95 shadow-md shadow-bumeran-500/20 disabled:opacity-50"
             >
               {saveSuccess ? (
                 <>
@@ -339,12 +339,12 @@ export default function ScheduleModal({
               type="button"
               onClick={handleTestCronExecution}
               disabled={isTesting}
-              className="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-300 hover:text-white border border-slate-700 text-xs font-medium flex items-center justify-center gap-1.5 transition active:scale-95 disabled:opacity-50"
+              className="w-full py-2 px-3 rounded-xl bg-stone-100 dark:bg-slate-800 hover:bg-stone-200 dark:hover:bg-slate-750 text-stone-700 dark:text-slate-300 hover:text-stone-900 dark:hover:text-white border border-stone-200 dark:border-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition active:scale-95 disabled:opacity-50"
             >
               {isTesting ? (
                 <Loader2 className="w-3.5 h-3.5 animate-spin" />
               ) : (
-                <PlayCircle className="w-3.5 h-3.5 text-amber-400" />
+                <PlayCircle className="w-3.5 h-3.5 text-bumeran-600 dark:text-amber-400" />
               )}
               <span>Probar disparo de envío ahora</span>
             </button>
