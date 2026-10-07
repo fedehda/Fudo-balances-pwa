@@ -42,9 +42,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning className="dark">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('fudo_theme');if(t==='light'){document.documentElement.classList.remove('dark')}else{document.documentElement.classList.add('dark')}}catch(e){}})()`,
+          }}
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-stone-100/70 dark:bg-slate-950 text-stone-900 dark:text-slate-100 min-h-screen selection:bg-orange-500 selection:text-white transition-colors duration-200`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-stone-100/70 dark:bg-black text-stone-900 dark:text-slate-100 min-h-screen selection:bg-orange-500 selection:text-white transition-colors duration-200`}
       >
         <ThemeProvider>
           <ServiceWorkerRegister />

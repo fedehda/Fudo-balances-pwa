@@ -318,7 +318,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-stone-100/70 dark:bg-slate-950 text-stone-900 dark:text-slate-100 flex flex-col transition-colors">
+    <div className="min-h-screen bg-stone-100/70 dark:bg-black text-stone-900 dark:text-slate-100 flex flex-col transition-colors">
       {/* Cabecera */}
       <Header
         lastSyncedAt={lastSyncedAt}
